@@ -8,7 +8,6 @@ const ListToDo = () => {
     loadToDo();
   }, [loadToDo]);
 
-  console.log(toDo);
   return (
     <div className="form-check">
       {toDo.map((tasck) => (
