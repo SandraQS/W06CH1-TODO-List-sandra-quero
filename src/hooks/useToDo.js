@@ -7,7 +7,6 @@ const useToDo = () => {
   const toDo = useSelector(({ toDo }) => toDo);
 
   const loadToDo = useCallback(() => {
-    console.log("INSIDE");
     dispatch(loadActionThunks());
   }, [dispatch]);
 
