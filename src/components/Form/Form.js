@@ -16,8 +16,8 @@ const Form = () => {
 
   const createClick = (event) => {
     event.preventDefault();
-    console.log(newTask);
     createNewTask(newTask);
+    setNewTask(initialTask);
   };
 
   return (
@@ -35,7 +35,7 @@ const Form = () => {
           value={newTask.name}
           onChange={createTask}
         />
-        <input type="submit" className="btn btn-dark mb-3" value={"Create"} />
+        <input type="submit" className="btn btn-dark mb-3" value="Create" />
       </form>
     </>
   );
