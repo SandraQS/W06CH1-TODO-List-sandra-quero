@@ -4,6 +4,14 @@ import useToDo from "../../hooks/useToDo";
 const ListToDo = () => {
   const { toDo, loadToDo } = useToDo();
 
+  const editClick = (event) => {
+    console.log("editar");
+  };
+
+  const deleteClick = (event) => {
+    console.log("borrar");
+  };
+
   useEffect(() => {
     loadToDo();
   }, [loadToDo]);
@@ -21,6 +29,24 @@ const ListToDo = () => {
           <label className="form-check-label" htmlFor="flexCheckDefault">
             {tasck.name}
           </label>
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={(event) => {
+              editClick(event);
+            }}
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={(event) => {
+              deleteClick(event);
+            }}
+          >
+            Delete
+          </button>
         </div>
       ))}
     </div>
