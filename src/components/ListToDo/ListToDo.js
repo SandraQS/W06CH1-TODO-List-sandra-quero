@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import useToDo from "../../hooks/useToDo";
 
 const ListToDo = () => {
-  const { toDo, loadToDo } = useToDo();
+  const { toDo, loadToDo, deleteTask } = useToDo();
 
   const editClick = (event) => {
-    console.log("editar");
+    //editar
   };
 
-  const deleteClick = (event) => {
-    console.log("borrar");
+  const deleteClick = (event, id) => {
+    deleteTask(id);
   };
 
   useEffect(() => {
@@ -18,8 +18,8 @@ const ListToDo = () => {
 
   return (
     <div className="form-check">
-      {toDo.map((tasck) => (
-        <div key={tasck.id}>
+      {toDo.map((task) => (
+        <div key={task.id}>
           <input
             className="form-check-input"
             type="checkbox"
@@ -27,7 +27,7 @@ const ListToDo = () => {
             id="flexCheckDefault"
           />
           <label className="form-check-label" htmlFor="flexCheckDefault">
-            {tasck.name}
+            {task.name}
           </label>
           <button
             type="button"
@@ -42,7 +42,7 @@ const ListToDo = () => {
             type="button"
             className="btn btn-danger"
             onClick={(event) => {
-              deleteClick(event);
+              deleteClick(event, task.id);
             }}
           >
             Delete

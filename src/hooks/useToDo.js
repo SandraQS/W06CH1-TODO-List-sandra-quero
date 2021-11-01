@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createActionThunks,
+  deleteActionThunks,
   loadActionThunks,
 } from "../redux/thunks/toDoThunks";
 
@@ -17,10 +18,15 @@ const useToDo = () => {
     dispatch(createActionThunks(newTask));
   };
 
+  const deleteTask = (id) => {
+    dispatch(deleteActionThunks(id));
+  };
+
   return {
     loadToDo,
     dispatch,
     createNewTask,
+    deleteTask,
     toDo,
   };
 };
