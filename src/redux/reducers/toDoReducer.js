@@ -14,7 +14,11 @@ const toDoReducer = (toDoList = [], action) => {
     case actionTypes.delete:
       newtoDoList = toDoList.filter((toDo) => toDo.id !== action.id);
       break;
-
+    case actionTypes.modify:
+      newtoDoList = toDoList.map((task) =>
+        action.toDo.id === task.id ? { ...task, name: action.toDo.name } : task
+      );
+      break;
     default:
       break;
   }
