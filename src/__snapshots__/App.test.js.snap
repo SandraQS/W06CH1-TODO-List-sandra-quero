@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a App component When it's rendered Then it should show match the last snapshot 1`] = `
+Array [
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className="form-label"
+      htmlFor="exampleFormControlInput1"
+    >
+      Task
+    </label>
+    <input
+      autoComplete="off"
+      className="form-control"
+      id="name"
+      onChange={[Function]}
+      placeholder="Task"
+      type="text"
+      value=""
+    />
+    <input
+      className="btn btn-dark mb-3"
+      type="submit"
+      value="Create"
+    />
+  </form>,
+  <h1>
+    To Do List
+  </h1>,
+  <div
+    className="form-check"
+  />,
+]
+`;

@@ -5,8 +5,8 @@ import ListToDo from "./components/ListToDo/ListToDo";
 function App() {
   return (
     <>
-      <h1>Hola {`:)`}</h1>
       <Form />
+      <h1>To Do List</h1>
       <ListToDo />
     </>
   );
