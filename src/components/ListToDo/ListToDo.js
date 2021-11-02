@@ -19,7 +19,7 @@ const ListToDo = () => {
   return (
     <div className="form-check">
       {toDo.map((task) => (
-        <div key={task.id}>
+        <div key={task.id} className="row justify-content-center text-center">
           <input
             className="form-check-input"
             type="checkbox"
