@@ -1,28 +1,52 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useToDo from "../../hooks/useToDo";
 
 const Form = () => {
-  const { createNewTask } = useToDo();
-  const initialTask = {
-    name: "",
-    done: false,
-  };
+  const { currentToDo, createNewTask, modifyTask, resetCurrentToDo } =
+    useToDo();
+  const initialTask = useMemo(
+    () => ({
+      name: "",
+      done: false,
+    }),
+    []
+  );
   const [newTask, setNewTask] = useState(initialTask);
 
   const createTask = (event) => {
     event.preventDefault();
     setNewTask({ ...newTask, name: event.target.value });
   };
-
   const createClick = (event) => {
     event.preventDefault();
     createNewTask(newTask);
     setNewTask(initialTask);
   };
 
+  const editClick = (event) => {
+    event.preventDefault();
+    modifyTask({ ...newTask, id: currentToDo.toDo.id });
+    resetCurrentToDo();
+    setNewTask(initialTask);
+  };
+
+  useEffect(() => {
+    if (currentToDo.isEditing) {
+      setNewTask({ ...initialTask, name: currentToDo.toDo.name });
+    }
+  }, [currentToDo, initialTask]);
+
   return (
     <>
-      <form onSubmit={createClick}>
+      <form
+        onSubmit={
+          currentToDo.isEditing
+            ? (event) => {
+                editClick(event);
+              }
+            : createClick
+        }
+      >
         <label htmlFor="exampleFormControlInput1" className="form-label">
           Task
         </label>
@@ -35,7 +59,9 @@ const Form = () => {
           value={newTask.name}
           onChange={createTask}
         />
-        <input type="submit" className="btn btn-dark mb-3" value="Create" />
+        <button type="submit" className="btn btn-dark mb-3">
+          {currentToDo.isEditing ? "Edit" : "Create"}
+        </button>
       </form>
     </>
   );

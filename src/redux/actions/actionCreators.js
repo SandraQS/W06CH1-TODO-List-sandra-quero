@@ -15,8 +15,16 @@ export const deleteAction = (id) => ({
   id,
 });
 
-export const modifyAction = (toDo, id) => ({
+export const modifyAction = (toDo) => ({
   type: actionTypes.modify,
   toDo,
-  id,
+});
+
+export const loadCurrentToDoAction = (toDo) => ({
+  type: actionTypes.loadCurrentToDo,
+  toDo,
+});
+
+export const resetCurrentCurrentAction = () => ({
+  type: actionTypes.resetCurrentCurrentToDo,
 });

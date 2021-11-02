@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import useToDo from "../../hooks/useToDo";
 
 const ListToDo = () => {
-  const { toDo, loadToDo, deleteTask } = useToDo();
+  const { toDo, loadToDo, deleteTask, loadCurrentToDo } = useToDo();
 
-  const editClick = (event) => {
-    //editar
+  const editClick = (event, toDo) => {
+    loadCurrentToDo(toDo);
   };
 
   const deleteClick = (event, id) => {
@@ -33,7 +33,7 @@ const ListToDo = () => {
             type="button"
             className="btn btn-dark"
             onClick={(event) => {
-              editClick(event);
+              editClick(event, task);
             }}
           >
             Edit

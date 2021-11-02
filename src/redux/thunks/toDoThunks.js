@@ -2,6 +2,7 @@ import {
   createAction,
   deleteAction,
   loadAction,
+  modifyAction,
 } from "../actions/actionCreators";
 
 export const loadActionThunks = () => async (dispatch) => {
@@ -35,4 +36,20 @@ export const deleteActionThunks = (id) => async (dispatch) => {
   if (response.ok) {
     dispatch(deleteAction(id));
   }
+};
+
+export const modifyActionThunks = (toDo) => async (dispatch) => {
+  const response = await fetch(
+    `https://todo-api-sqs.herokuapp.com/toDo/${toDo.id}`,
+    {
+      method: "PUT",
+      body: JSON.stringify(toDo),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const modifyTask = await response.json();
+  dispatch(modifyAction(modifyTask));
 };
