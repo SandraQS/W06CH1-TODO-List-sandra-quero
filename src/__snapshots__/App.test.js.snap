@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Given a App component When it's rendered Then it should show match the last snapshot 1`] = `
-Array [
+<div
+  className="container"
+>
   <form
     onSubmit={[Function]}
   >
@@ -25,12 +27,12 @@ Array [
       type="submit"
       value="Create"
     />
-  </form>,
+  </form>
   <h1>
     To Do List
-  </h1>,
+  </h1>
   <div
     className="form-check"
-  />,
-]
+  />
+</div>
 `;
